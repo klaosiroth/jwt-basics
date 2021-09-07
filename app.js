@@ -8,6 +8,7 @@ const app = express()
 // database
 
 // routers
+const mainRouter = require('./routes/mainRoutes')
 
 // middleware
 const notFoundMiddleware = require('./middleware/not-found')
@@ -17,6 +18,7 @@ app.use(express.static('./public'))
 app.use(express.json())
 
 // routes
+app.use('/api/v1', mainRouter)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
