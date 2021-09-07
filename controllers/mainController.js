@@ -1,4 +1,17 @@
+const CustomAPIError = require('../errors/custom-error')
+
 const login = async (req, res) => {
+  const { username, password } = req.body
+
+  // check username, password in post(login) request
+  console.log(username, password)
+
+  // validate username and password
+  if (!(username && password)) {
+    // res.status(400).json({ message: 'please provide your username and password' })
+    throw new CustomAPIError('please provide your username or password', 400)
+  }
+
   res.send('login')
 }
 
